@@ -1,32 +1,44 @@
 const emotions = ['happy', 'sad', 'neutral'];
 
-let randomIndex = Math.floor(Math.random()*3)
-console.log(randomIndex);
-console.log(emotions[randomIndex]);
 
 
 const emotionCollection = {
-    happy: ['sun', 'flower', 'rose'],
-    neutral: ['moon', 'tree', 'tulip'],
-    sad: ['rain', 'cactus', 'pine']
+    happy : {
+        thing : ['sun', 'rainbow', 'flowers'],
+        animal: ['Girrafe', 'Golden Retriever', 'Zebra'],
+        activity: ['smiling', 'talking', 'dancing']
+
+    },
+    neutral : {
+        thing : ['moon', 'clouds', 'trees'],
+        animal: ['Koala', 'Dog', 'Chicken'],
+        activity: ['reading', 'standing', 'sitting'],
+    },
+    sad : {
+        thing : ['rain', 'storm', 'night'],
+        animal: ['Sloth', 'Cat', 'Penquin'],
+        activity: ['lying', 'watching Tv', 'sleeping']
+    },
 }
 
-const Template = ['Your vibe is similiar to ', 'You look like a ', 'Your favorite thing is ']
+const Template = ['Your vibe is similiar to ', 'Your spirit animal is ', 'Your favorite activity is ']
+let randomIndex = Math.floor(Math.random()*3)
 
 
 function makeMessage(emotion) {
-    for (let i = 0; i < Template.length - 1; i ++) {
-        switch (randomIndex){
-            case 0:
-                console.log(`${Template[i] + emotionCollection[0][i]}` );
-                break;
-            case 1:
-                console.log(`${Template[i] + emotionCollection[1][i]}` );
-
-            case 2:
-                console.log(`${Template[i] + emotionCollection[2][i]}` );
-
-        }    
-    }
+    console.log(`Your mood is ${emotion}!`);
+    console.log('');
+        
+    let moodData = emotionCollection[emotion];
     
+    let i = 0;
+    for (const key in moodData) { 
+        let randomIndex = Math.floor(Math.random()*3)
+        console.log(`${Template[i] + moodData[key][randomIndex]}`);
+        i++;
+    }
 }
+    
+
+
+makeMessage(emotions[randomIndex]);
